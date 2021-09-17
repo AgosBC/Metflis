@@ -2,10 +2,22 @@ package ar.com.ada.mongo.metflix.entities;
 
 import java.util.*;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
+
+import org.bson.types.ObjectId;
+
 import ar.com.ada.mongo.metflix.entities.personas.Actor;
 import ar.com.ada.mongo.metflix.entities.personas.Director;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
 public class Contenido {
+
+    @JsonSerialize(using = ToStringSerializer.class) // convertidor a string  ya que _id es Object
+    private ObjectId _id;
 
     private String nombre;
 
